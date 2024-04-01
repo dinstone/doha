@@ -34,6 +34,23 @@ DOHA 将工程分为：
 
 - doha-business：业务逻辑实现的地方，不依赖其它工程。
 
+## 快速开始
+
+1. 安装DOHA工程模板
+
+``` shell
+git clone https://github.com/dinstone/doha.git
+
+cd doha/doha-archetype/
+
+mvn clean install
+```
+
+2. 应用模板创建工程
+
+``` shell
+mvn archetype:generate  -DarchetypeGroupId=io.doha.template  -DarchetypeArtifactId=doha-template-archetype  -DarchetypeVersion=1.0.0 -DgroupId=demo.service -DartifactId=order-service -Dpackage=demo.service.order
+```
 
 ## 模板工程
 
