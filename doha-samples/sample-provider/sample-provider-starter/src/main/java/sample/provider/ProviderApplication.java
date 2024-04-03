@@ -1,7 +1,5 @@
-package io.doha.template;
+package sample.provider;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +11,6 @@ import org.springframework.core.env.Environment;
 
 import com.dinstone.focus.client.ClientOptions;
 import com.dinstone.focus.client.starter.EnableFocusClient;
-import com.dinstone.focus.serialze.protobuf.ProtobufSerializer;
 import com.dinstone.focus.server.ServerOptions;
 import com.dinstone.focus.server.starter.EnableFocusServer;
 
@@ -21,13 +18,10 @@ import com.dinstone.focus.server.starter.EnableFocusServer;
 @EnableFocusClient
 @EnableFocusServer
 @SpringBootApplication
-public class DohaTemplateApplication {
-
-    private static final Logger logger = LoggerFactory.getLogger(DohaTemplateApplication.class);
+public class ProviderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DohaTemplateApplication.class, args);
-        logger.info("service started");
+        SpringApplication.run(ProviderApplication.class, args);
     }
 
     @Autowired
@@ -48,7 +42,7 @@ public class DohaTemplateApplication {
     @Bean
     @ConditionalOnMissingBean
     ClientOptions focusClientOptions() {
-        return new ClientOptions(appName).connect("127.0.0.1", 2222).setSerializerType(ProtobufSerializer.SERIALIZER_TYPE);
+        return new ClientOptions(appName).connect("127.0.0.1", 2222);
     }
 
 }

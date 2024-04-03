@@ -3,13 +3,14 @@
 #set( $symbol_escape = '\' )
 package ${package};
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
@@ -19,24 +20,17 @@ import com.dinstone.focus.serialze.protobuf.ProtobufSerializer;
 import com.dinstone.focus.server.ServerOptions;
 import com.dinstone.focus.server.starter.EnableFocusServer;
 
-import ${package}.api.rpc.OrderRequest;
-import ${package}.api.rpc.OrderRpcApi;
-
 @Configurable
 @EnableFocusClient
 @EnableFocusServer
 @SpringBootApplication
 public class DohaTemplateApplication {
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext c = SpringApplication.run(DohaTemplateApplication.class, args);
+    private static final Logger logger = LoggerFactory.getLogger(DohaTemplateApplication.class);
 
-        OrderRpcApi rpcApi = c.getBean(OrderRpcApi.class);
-        OrderRequest request = new OrderRequest();
-        request.setUid("U001");
-        request.setPoi("P1988");
-        request.setSn("SN986233");
-        System.out.println(rpcApi.createOrder(request).getOid());
+    public static void main(String[] args) {
+        SpringApplication.run(DohaTemplateApplication.class, args);
+        logger.info("service started");
     }
 
     @Autowired
