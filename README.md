@@ -1,6 +1,6 @@
 ## DOHA (Domain-Oriented Hexagonal Architecture)
 
-DOHA (面向领域的六边形架构)，是应用领域建模业务逻辑，落地六边形架构的方法。
+DOHA (面向领域的六边形架构)的核心在于应用领域驱动设计（DDD）的思想来设计和组织业务逻辑，并结合六边形架构来实现业务逻辑与外部接口的分离，为构建健壮、可维护、可扩展的软件系统提供了有力的支持。
 
 ![六边形架构](https://static001.geekbang.org/infoq/2e/2e3e0acccfa5e96d9bef8e0a7090660d.png)
 
@@ -18,7 +18,7 @@ DOHA (面向领域的六边形架构)，是应用领域建模业务逻辑，落�
 
 ![逻辑架构](https://static001.geekbang.org/infoq/04/0444526efb08ed4d6a86bb5805775882.png)
 
-DOHA 将应用分为 Adapter 层、Port 层和 Domain 层。Adapter 层依赖 Port 层，Port 层和 Domain 层作为业务逻辑层互相依赖。
+DOHA 将应用分层为 Adapter 层、Port 层和 Domain 层。Adapter 层依赖 Port 层，Port 层和 Domain 层作为业务逻辑层互相依赖。
 
 ## 实现架构
 
