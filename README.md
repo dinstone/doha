@@ -16,23 +16,25 @@ DOHA (面向领域的六边形架构)的核心在于应用领域驱动设计（D
 
 ## 逻辑架构
 
-![逻辑架构](https://static001.geekbang.org/infoq/04/0444526efb08ed4d6a86bb5805775882.png)
+![逻辑架构](https://static001.geekbang.org/infoq/93/939339cf6398a51fca44d9e061df079f.jpeg)
 
-DOHA 将应用分层为 Adapter 层、Port 层和 Domain 层。Adapter 层依赖 Port 层，Port 层和 Domain 层作为业务逻辑层互相依赖。
+DOHA 架构将应用细化为五个分层： Inbound Adapter 层、Inbound Port 层、Domain 层、Outbound Port 层、Outbound Adapter层。
+
+Inbound Adapter层和 Outbound Adapter层作为适配器层，依赖业务层（Inbound Port 层，Outbound Port 层和 Domain 层）。
 
 ## 实现架构
 
-![实现架构](https://static001.geekbang.org/infoq/3a/3a2b3c7bee5112637c382dfe2dd08376.png)
+![实现架构](https://static001.geekbang.org/infoq/1f/1fa3d155932035b60fe7cb4657784927.jpeg)
 
 DOHA 将工程分为：
 
-- doha-starter：应用启动和部署单元，依赖 doha-business 和 doha-adapter 工程。
+- doha-handler：应用程序入口，入站适配器实现都在这里，负责处理外部请求，依赖其它工程。
 
-- doha-Interface：为第三方应用提供接口 API，如 RPC、Event、MQ 等，不依赖其它工程。
+- doha-interface：提供给第三方应用依赖的编程接口，如 RPC、Event、MQ 等，不依赖其它工程。
 
-- doha-adapter：出入站适配器实现都在这里，依赖 doha-business 工程。
+- doha-invoker：出站适配器实现都在这里，负责调用外部系统，依赖 doha-business 工程。
 
-- doha-business：业务逻辑实现的地方，不依赖其它工程。
+- doha-business：业务逻辑实现的地方，包括入站端口服务、领域模型、出站端口接口，不依赖其它工程。
 
 ## 快速开始
 

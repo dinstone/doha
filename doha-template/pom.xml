@@ -7,13 +7,13 @@
     <groupId>io.doha.template</groupId>
     <artifactId>doha-template</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
 
     <modules>
         <module>doha-template-interface</module>
         <module>doha-template-business</module>
-        <module>doha-template-adapter</module>
-        <module>doha-template-starter</module>
+        <module>doha-template-invoker</module>
+        <module>doha-template-handler</module>
     </modules>
 
     <properties>
