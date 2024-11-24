@@ -51,7 +51,7 @@ mvn clean install
 2. 应用模板创建工程
 
 ``` shell
-mvn archetype:generate  -DarchetypeGroupId=io.doha.template  -DarchetypeArtifactId=doha-template-archetype  -DarchetypeVersion=1.0.0 -DgroupId=demo.service -DartifactId=order-service -Dpackage=demo.service.order
+mvn archetype:generate  -DarchetypeGroupId=io.doha.template  -DarchetypeArtifactId=doha-template-archetype  -DarchetypeVersion=2.0.0 -DgroupId=demo.service -DartifactId=order-service -Dpackage=demo.service.order
 ```
 
 ## Archetype 构建
