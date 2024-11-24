@@ -54,84 +54,20 @@ mvn clean install
 mvn archetype:generate  -DarchetypeGroupId=io.doha.template  -DarchetypeArtifactId=doha-template-archetype  -DarchetypeVersion=1.0.0 -DgroupId=demo.service -DartifactId=order-service -Dpackage=demo.service.order
 ```
 
-## 模板工程
+## Archetype 构建
 
-``` shell
-├ doha-template # 微服务模板工程
-├── doha-template-adapter # Adapter工程
-│   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── io
-│       │   │       └── doha
-│       │   │           └── template
-│       │   │               └── adapter
-│       │   │                   ├── cache
-│       │   │                   ├── dao
-│       │   │                   │   └── OrderDao.java
-│       │   │                   ├── mq
-│       │   │                   └── rpc
-│       │   │                       ├── CalculateSpi.java
-│       │   │                       └── OrderRpcSpi.java
-│       │   └── resources
-│       └── test
-│           └── java
-├── doha-template-business # Business工程
-│   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── io
-│       │   │       └── doha
-│       │   │           └── template
-│       │   │               ├── domain
-│       │   │               │   ├── model
-│       │   │               │   │   └── OrderAggregate.java
-│       │   │               │   └── service
-│       │   │               │       └── OrderRuleService.java
-│       │   │               └── port
-│       │   │                   ├── event
-│       │   │                   ├── remote
-│       │   │                   │   └── CalculateRemote.java
-│       │   │                   ├── repository
-│       │   │                   │   └── OrderRepository.java
-│       │   │                   └── service
-│       │   │                       ├── OrderCommandService.java
-│       │   │                       └── OrderQueryService.java
-│       │   └── resources
-│       └── test
-│           └── java
-├── doha-template-interface # Interface工程
-│   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── io
-│       │   │       └── doha
-│       │   │           └── template
-│       │   │               └── api
-│       │   │                   ├── mq
-│       │   │                   └── rpc
-│       │   │                       ├── OrderRequest.java
-│       │   │                       ├── OrderResponse.java
-│       │   │                       └── OrderRpcApi.java
-│       │   └── resources
-│       └── test
-│           └── java
-├── doha-template-starter # Starter工程
-│   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── io
-│       │   │       └── doha
-│       │   │           └── template
-│       │   │               └── DohaTemplateApplication.java
-│       │   └── resources
-│       │       ├── application.properties
-│       │       └── log4j2.xml
-│       └── test
-│           └── java
-├── pom.xml
+1. 从模板工程编译Archetype工程
+
+```shell
+cd  doha/doha-template/
+
+mvn clean archetype:create-from-project
+```
+
+2. 拷贝生成的Archetype资源文件到 doha-archetype工程
+
+```shell
+cd  doha
+
+cp -rv doha-template/target/generated-sources/archetype/src/* doha-archetype/src/
 ```
